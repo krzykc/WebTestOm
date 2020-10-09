@@ -10,7 +10,8 @@ namespace WebTestOm.PageObjects
         }
 
         public IWebElement requestDemoButton => _driver.FindElement(By.CssSelector(".slider__button"));
-        public IWebElement CloseCookieInfoButton => _driver.FindElement(By.CssSelector(".fa-times"));
+        public IWebElement closeCookieInfoButton => _driver.FindElement(By.CssSelector(".fa-times"));
+        public IWebElement contactPage => _driver.FindElement(By.CssSelector(".header__function-nav--right .header__menuitem--function-nav:nth-child(3) > .header__menulink--function-nav"));
 
         public void GoToHomePage()
         {
@@ -25,7 +26,12 @@ namespace WebTestOm.PageObjects
 
         public void CloseCookiInfoBar()
         {
-            WaitForElementAndClick(CloseCookieInfoButton);
+            WaitForElementAndClick(closeCookieInfoButton);
+        }
+
+        public void GoToContactPage()
+        {
+            WaitForElementAndClick(contactPage);
         }
 
 

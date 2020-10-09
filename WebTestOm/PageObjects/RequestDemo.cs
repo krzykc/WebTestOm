@@ -23,15 +23,7 @@ namespace WebTestOm.PageObjects
 
         internal void SumbmitRequestForm()
         {
-
-        }
-
-        public bool IsCorrectAddress(string address)
-        {
-            if (_driver.Url == address)
-                return true;
-            else
-                return false;
+            WaitForElementAndClick(requestDemoFormSubmitButton);
         }
 
         internal void FillRequestForm()

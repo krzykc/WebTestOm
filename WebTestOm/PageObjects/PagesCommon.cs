@@ -32,6 +32,14 @@ namespace WebTestOm.PageObjects
             selectElement.SelectByText(value);
         }
 
+        public bool IsCorrectAddress(string address)
+        {
+            if (_driver.Url == address)
+                return true;
+            else
+                return false;
+        }
+
         public void MoveToElement(IWebElement element)
         {
             actions.MoveToElement(element);
