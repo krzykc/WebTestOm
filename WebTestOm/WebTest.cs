@@ -2,6 +2,8 @@
 using OpenQA.Selenium;
 using System;
 using System.Configuration;
+using System.Net;
+using System.Net.Http;
 using System.Security.Permissions;
 using WebTestOm.PageObjects;
 
@@ -43,18 +45,18 @@ namespace WebTestOm
                 driver.Quit();
             }
         }
-        private void RunDriver(BrowserType browserType)
+        private void RunDriver(BrowserType browserType, string driverPath)
         {
-            driver = WebDriverFactory.create(browserType);
+            driver = WebDriverFactory.create(browserType, driverPath);
             driver.Manage().Window.Maximize();
         }
 
         [TestMethod]
-        [DataRow(BrowserType.Chrome)]
-        [DataRow(BrowserType.IE11)]
-        public void VerifyLiveDemo(BrowserType browserType)
+        [DataRow(BrowserType.Chrome, driverPath)]
+        [DataRow(BrowserType.IE11, driverPath)]
+        public void VerifyLiveDemo(BrowserType browserType, string driverPath)
         {
-            RunDriver(browserType);
+            RunDriver(browserType, driverPath);
             var home = new HomePage(driver);
             home.GoToHomePage();
             home.CloseCookiInfoBar();
@@ -68,17 +70,17 @@ namespace WebTestOm
         }
 
         [TestMethod]
-        [DataRow(BrowserType.Chrome)]
+        [DataRow(BrowserType.Chrome, driverPath)]
         [DataRow(BrowserType.IE11)]
-        public void VerifyContact(BrowserType browserType)
+        public void VerifyContact(BrowserType browserType, string driverPath)
         {
-            RunDriver(browserType);
+            RunDriver(browserType, driverPath);
             var home = new HomePage(driver);
             home.GoToHomePage();
             home.CloseCookiInfoBar();
             home.GoToContactPage();
+            Assert.IsTrue(home.IsCorrectAddress("https://www.omada.net/en-us/more/company/contact"));
             var contact = new ContactPage(driver);
-            contact.IsCorrectAddress("https://www.omada.net/en-us/more/company/contact");
             contact.FillContactForm();
             //Commented out due to avoid spam on Production environment
             //contact.SumbmitContactForm();
@@ -86,14 +88,16 @@ namespace WebTestOm
         }
 
         [TestMethod]
-        [DataRow(BrowserType.Chrome)]
-        [DataRow(BrowserType.IE11)]
-        public void VerifyAboutUs(BrowserType browserType)
+        [DataRow(BrowserType.Chrome, driverPath)]
+        //[DataRow(BrowserType.IE11)]
+        public void VerifyAboutUs(BrowserType browserType, string driverPath)
         {
-            RunDriver(browserType);
+            RunDriver(browserType, driverPath);
             var home = new HomePage(driver);
             home.GoToHomePage();
             home.CloseCookiInfoBar();
             home.GoToAboutUsPage();
+            Assert.IsTrue(home.IsCorrectAddress("https://www.omada.net/en-us/more"));
         }
+    }
 }

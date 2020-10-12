@@ -6,3 +6,4 @@
 6. Verify IdentityPROCESS+
 7. Verify customer cases
 8. Verify Language selection
+9. Verify all links

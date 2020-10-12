@@ -7,19 +7,19 @@ namespace WebTestOm
 {
     public static class WebDriverFactory
     {
-        public static IWebDriver create(BrowserType type)
+        public static IWebDriver create(BrowserType type, string driverPath)
         {
             switch(type)
             {
                 case BrowserType.Chrome:
-                    return new ChromeDriver();
+                    return new ChromeDriver(driverPath);
                 case BrowserType.IE11:
                     InternetExplorerOptions ieOptions = new InternetExplorerOptions();
                     ieOptions.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
                     ieOptions.IgnoreZoomLevel = true;
                     ieOptions.UnhandledPromptBehavior = UnhandledPromptBehavior.Accept;
                     ieOptions.EnablePersistentHover = true;
-                    ieOptions.EnableNativeEvents = false;
+                    ieOptions.EnableNativeEvents = true; // potentially to false
                     ieOptions.EnsureCleanSession = true;
                     return new InternetExplorerDriver(ieOptions);
                 default:
