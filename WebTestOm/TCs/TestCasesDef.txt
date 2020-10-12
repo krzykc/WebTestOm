@@ -1,9 +1,8 @@
 ﻿1. Verify Home-page
 2. Verify ordering Live Demo
 3. Verify contact Omada 
-4. Verify about us tab
+4. Verify about us
 5. Verify search engine
 6. Verify IdentityPROCESS+
-7. Verify customer cases
-8. Verify Language selection
-9. Verify all links
+7. Verify Language selection
+8. Verify all links

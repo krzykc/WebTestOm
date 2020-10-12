@@ -1,8 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 
 namespace WebTestOm.PageObjects
 {

@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System;
-using System.Configuration;
-using System.Net;
-using System.Net.Http;
-using System.Security.Permissions;
 using WebTestOm.PageObjects;
 
 namespace WebTestOm
@@ -14,8 +10,6 @@ namespace WebTestOm
     {
         public IWebDriver driver;
         private const string driverPath = @"C:\drivers";
-        //private const string screenshotPath = "screenshots";
-        private const string homePage = @"https://www.omada.net";
         private TestContext testContextInstance;
 
         public TestContext TestContext
@@ -70,8 +64,8 @@ namespace WebTestOm
         }
 
         [TestMethod]
-        //[DataRow(BrowserType.Chrome, driverPath)]
-        [DataRow(BrowserType.IE11)]
+        [DataRow(BrowserType.Chrome, driverPath)]
+        [DataRow(BrowserType.IE11, driverPath)]
         public void VerifyContact(BrowserType browserType, string driverPath)
         {
             RunDriver(browserType, driverPath);
@@ -89,7 +83,7 @@ namespace WebTestOm
 
         [TestMethod]
         [DataRow(BrowserType.Chrome, driverPath)]
-        [DataRow(BrowserType.IE11)]
+        [DataRow(BrowserType.IE11, driverPath)]
         public void VerifyAboutUs(BrowserType browserType, string driverPath)
         {
             RunDriver(browserType, driverPath);
