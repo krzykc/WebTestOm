@@ -7,12 +7,12 @@ namespace WebTestOm
 {
     public static class WebDriverFactory
     {
-        public static IWebDriver create(BrowserType type, string driverPath)
+        public static IWebDriver create(BrowserType type)
         {
             switch(type)
             {
                 case BrowserType.Chrome:
-                    return new ChromeDriver(driverPath);
+                    return new ChromeDriver();
                 case BrowserType.IE11:
                     InternetExplorerOptions ieOptions = new InternetExplorerOptions();
                     ieOptions.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
@@ -21,7 +21,7 @@ namespace WebTestOm
                     ieOptions.EnablePersistentHover = true;
                     ieOptions.EnableNativeEvents = false;
                     ieOptions.EnsureCleanSession = true;
-                    return new InternetExplorerDriver(driverPath, ieOptions);
+                    return new InternetExplorerDriver(ieOptions);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }

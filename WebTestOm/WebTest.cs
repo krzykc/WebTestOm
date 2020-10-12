@@ -43,18 +43,18 @@ namespace WebTestOm
                 driver.Quit();
             }
         }
-        private void RunDriver(BrowserType browserType, string driverPath)
+        private void RunDriver(BrowserType browserType)
         {
-            driver = WebDriverFactory.create(browserType, driverPath);
+            driver = WebDriverFactory.create(browserType);
             driver.Manage().Window.Maximize();
         }
 
         [TestMethod]
-        [DataRow(BrowserType.Chrome, driverPath)]
-        [DataRow(BrowserType.IE11, driverPath)]
-        public void VerifyLiveDemo(BrowserType browserType, string driverPath)
+        [DataRow(BrowserType.Chrome)]
+        [DataRow(BrowserType.IE11)]
+        public void VerifyLiveDemo(BrowserType browserType)
         {
-            RunDriver(browserType, driverPath);
+            RunDriver(browserType);
             var home = new HomePage(driver);
             home.GoToHomePage();
             home.CloseCookiInfoBar();
@@ -68,21 +68,32 @@ namespace WebTestOm
         }
 
         [TestMethod]
-        [DataRow(BrowserType.Chrome, driverPath)]
-        [DataRow(BrowserType.IE11, driverPath)]
-        public void VerifyContact(BrowserType browserType, string driverPath)
+        [DataRow(BrowserType.Chrome)]
+        [DataRow(BrowserType.IE11)]
+        public void VerifyContact(BrowserType browserType)
         {
-            RunDriver(browserType, driverPath);
+            RunDriver(browserType);
             var home = new HomePage(driver);
-                home.GoToHomePage();
-                home.CloseCookiInfoBar();
-                home.GoToContactPage();
-                var contact = new ContactPage(driver);
-                contact.IsCorrectAddress("https://www.omada.net/en-us/more/company/contact");
-                contact.FillContactForm();
-                //Commented out due to avoid spam on Production environment
-                //contact.SumbmitContactForm();
-                //Assert.IsTrue(reqDemo.IsCorrectAddress("https://www.omada.net/en-us/more/resources/request-an-omada-live-demo");
+            home.GoToHomePage();
+            home.CloseCookiInfoBar();
+            home.GoToContactPage();
+            var contact = new ContactPage(driver);
+            contact.IsCorrectAddress("https://www.omada.net/en-us/more/company/contact");
+            contact.FillContactForm();
+            //Commented out due to avoid spam on Production environment
+            //contact.SumbmitContactForm();
+            //Assert.IsTrue(reqDemo.IsCorrectAddress("https://www.omada.net/en-us/more/resources/request-an-omada-live-demo");
         }
-    }
+
+        [TestMethod]
+        [DataRow(BrowserType.Chrome)]
+        [DataRow(BrowserType.IE11)]
+        public void VerifyAboutUs(BrowserType browserType)
+        {
+            RunDriver(browserType);
+            var home = new HomePage(driver);
+            home.GoToHomePage();
+            home.CloseCookiInfoBar();
+            home.GoToAboutUsPage();
+        }
 }
