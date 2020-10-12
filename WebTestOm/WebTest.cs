@@ -34,7 +34,7 @@ namespace WebTestOm
         {
             if (TestContext.CurrentTestOutcome == UnitTestOutcome.Failed)
             {
-                string scrinshotPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/screenshots/" + TestContext.TestName + "_screenshot.png";
+                string scrinshotPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\screenshots\" + TestContext.TestName + "_screenshot.png";
                 Screenshot image = ((ITakesScreenshot)driver).GetScreenshot();
                 image.SaveAsFile(scrinshotPath);
                 TestContext.AddResultFile(scrinshotPath);
@@ -70,7 +70,7 @@ namespace WebTestOm
         }
 
         [TestMethod]
-        [DataRow(BrowserType.Chrome, driverPath)]
+        //[DataRow(BrowserType.Chrome, driverPath)]
         [DataRow(BrowserType.IE11)]
         public void VerifyContact(BrowserType browserType, string driverPath)
         {
@@ -89,7 +89,7 @@ namespace WebTestOm
 
         [TestMethod]
         [DataRow(BrowserType.Chrome, driverPath)]
-        //[DataRow(BrowserType.IE11)]
+        [DataRow(BrowserType.IE11)]
         public void VerifyAboutUs(BrowserType browserType, string driverPath)
         {
             RunDriver(browserType, driverPath);

@@ -19,9 +19,9 @@ namespace WebTestOm
                     ieOptions.IgnoreZoomLevel = true;
                     ieOptions.UnhandledPromptBehavior = UnhandledPromptBehavior.Accept;
                     ieOptions.EnablePersistentHover = true;
-                    ieOptions.EnableNativeEvents = true; // potentially to false
+                    ieOptions.EnableNativeEvents = false;
                     ieOptions.EnsureCleanSession = true;
-                    return new InternetExplorerDriver(ieOptions);
+                    return new InternetExplorerDriver(driverPath, ieOptions);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
