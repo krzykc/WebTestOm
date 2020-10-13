@@ -6,7 +6,7 @@ namespace WebTestOm.PageObjects
     {
         public RequestDemo(IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
         }
 
         public IWebElement requestDemoForm => _driver.FindElement(By.Id("pardot-form"));
@@ -31,6 +31,7 @@ namespace WebTestOm.PageObjects
             //text field are in the frame so we need to switch to it
             _driver.SwitchTo().Frame(0);
             //putting test values into text fields
+            requestDemoFormName.Clear();
             requestDemoFormName.SendKeys("TestName");
             requestDemoFormLastName.SendKeys("TestLastName");
             requestDemoFormCompany.SendKeys("TestCompanyName");

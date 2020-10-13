@@ -21,6 +21,7 @@ namespace WebTestOm
                     ieOptions.EnablePersistentHover = true;
                     ieOptions.EnableNativeEvents = false;
                     ieOptions.EnsureCleanSession = true;
+                    ieOptions.RequireWindowFocus = true;
                     return new InternetExplorerDriver(driverPath, ieOptions);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);

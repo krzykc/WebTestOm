@@ -6,7 +6,7 @@ namespace WebTestOm.PageObjects
     {
         public AboutUs(IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
         }
 
     }

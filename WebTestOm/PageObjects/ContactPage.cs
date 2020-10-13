@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebTestOm.PageObjects
 {
@@ -11,7 +6,7 @@ namespace WebTestOm.PageObjects
     {
         public ContactPage (IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
         }
 
         public IWebElement contactFormDepartament => _driver.FindElement(By.Id("581103_91599pi_581103_91599"));

@@ -18,11 +18,6 @@ namespace WebTestOm
             set { testContextInstance = value; }
         }
 
-        [TestInitialize]
-        public void TestInitialize()
-        {
-        }
-
         [TestCleanup]
         public void TestCleanup()
         {
@@ -46,13 +41,14 @@ namespace WebTestOm
         }
 
         [TestMethod]
-        [DataRow(BrowserType.Chrome, driverPath)]
+        //[DataRow(BrowserType.Chrome, driverPath)]
         [DataRow(BrowserType.IE11, driverPath)]
         public void VerifyLiveDemo(BrowserType browserType, string driverPath)
         {
             RunDriver(browserType, driverPath);
             var home = new HomePage(driver);
             home.GoToHomePage();
+            Assert.IsTrue(home.IsCorrectAddress("https://www.omada.net/"));
             home.CloseCookiInfoBar();
             home.GoToRequestDemo();
             var requestDemo = new RequestDemo(driver);
@@ -71,6 +67,7 @@ namespace WebTestOm
             RunDriver(browserType, driverPath);
             var home = new HomePage(driver);
             home.GoToHomePage();
+            Assert.IsTrue(home.IsCorrectAddress("https://www.omada.net/"));
             home.CloseCookiInfoBar();
             home.GoToContactPage();
             Assert.IsTrue(home.IsCorrectAddress("https://www.omada.net/en-us/more/company/contact"));
@@ -89,6 +86,7 @@ namespace WebTestOm
             RunDriver(browserType, driverPath);
             var home = new HomePage(driver);
             home.GoToHomePage();
+            Assert.IsTrue(home.IsCorrectAddress("https://www.omada.net/"));
             home.CloseCookiInfoBar();
             home.GoToAboutUsPage();
             Assert.IsTrue(home.IsCorrectAddress("https://www.omada.net/en-us/more"));

@@ -20,6 +20,7 @@ namespace WebTestOm.PageObjects
             ImplicitWait(_driver);
             new WebDriverWait(_driver, timeSpan).Until(driver => element.Displayed);
         }
+
         public void WaitForElementAndClick(IWebElement element)
         {
             WaitForElement(element);
@@ -34,6 +35,7 @@ namespace WebTestOm.PageObjects
 
         public bool IsCorrectAddress(string address)
         {
+            _driver.Manage().Timeouts().PageLoad = timeSpan;
             if (_driver.Url == address)
                 return true;
             else
