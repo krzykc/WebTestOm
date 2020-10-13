@@ -41,7 +41,7 @@ namespace WebTestOm
         }
 
         [TestMethod]
-        //[DataRow(BrowserType.Chrome, driverPath)]
+        [DataRow(BrowserType.Chrome, driverPath)]
         [DataRow(BrowserType.IE11, driverPath)]
         public void VerifyLiveDemo(BrowserType browserType, string driverPath)
         {
